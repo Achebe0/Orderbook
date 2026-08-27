@@ -1,0 +1,13 @@
+build/
+cmake-build-*/
+*.o
+*.obj
+.idea/
+.vscode/
+*.iml
+.venv/
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
