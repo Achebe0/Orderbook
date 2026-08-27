@@ -11,6 +11,12 @@ find_package(OpenSSL REQUIRED)
 
 add_executable(orderbook
     src/core/main.cpp
+        src/core/main.cpp
+        src/agent/agents.cpp
+        src/agent/agents.h
+        src/agent/agents.h
+        src/agent/agents.h
+        src/agent/agents.cpp
 )
 
 target_include_directories(orderbook PRIVATE include)
