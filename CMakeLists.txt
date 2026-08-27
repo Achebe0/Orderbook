@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.20)
 project(orderbook CXX)
+list(REMOVE_ITEM CMAKE_SYSTEM_PREFIX_PATH "/mnt/c")
+set(Boost_NO_SYSTEM_PATHS ON)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
