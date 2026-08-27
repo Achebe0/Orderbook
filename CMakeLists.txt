@@ -1,23 +1,19 @@
 cmake_minimum_required(VERSION 3.20)
-project(orderbook CXX)
-list(REMOVE_ITEM CMAKE_SYSTEM_PREFIX_PATH "/mnt/c")
-set(BOOST_ROOT "/usr")
+
+project(orderbook LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
-find_package(Boost REQUIRED COMPONENTS system)
-find_package(OpenSSL REQUIRED)
-
-add_executable(orderbook
-    src/core/main.cpp
-        src/core/main.cpp
-        src/agent/agents.cpp
-        src/agent/agents.h
-        src/agent/agents.h
-        src/agent/agents.h
-        src/agent/agents.cpp
+file(GLOB_RECURSE ORDERBOOK_SOURCES CONFIGURE_DEPENDS
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h"
 )
 
-target_include_directories(orderbook PRIVATE include)
-target_link_libraries(orderbook PRIVATE Boost::system OpenSSL::SSL OpenSSL::Crypto)
+add_executable(orderbook ${ORDERBOOK_SOURCES})
+
+target_include_directories(orderbook PRIVATE
+        "${CMAKE_CURRENT_SOURCE_DIR}/src"
+        "${CMAKE_CURRENT_SOURCE_DIR}/include"
+)
